@@ -1,5 +1,6 @@
 import { useEffect, useState } from "react";
 import { Link } from "react-router";
+import { motion } from "framer-motion";
 
 interface Book {
     id: string;
@@ -31,28 +32,62 @@ function IslamicLibrary() {
     }, []);
 
     return (
-        <section className="py-16 px-4 bg-gradient-to-r from-amber-50 via-white to-amber-50">
+        <motion.section
+            className="py-16 px-4 bg-gradient-to-r from-amber-50 via-white to-amber-50 overflow-hidden"
+            initial={{ opacity: 0, y: 120 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            transition={{
+                duration: 1.6,
+                ease: [0.25, 0.1, 0.25, 1],
+            }}
+            viewport={{ once: true, amount: 0.2 }}
+        >
             {/* Section Headline */}
-            <div className="text-center mb-12">
+            <motion.div
+                className="text-center mb-12"
+                initial={{ opacity: 0, y: 60 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                transition={{ duration: 1, delay: 0.2, ease: "easeOut" }}
+                viewport={{ once: true }}
+            >
                 <h2 className="text-4xl md:text-5xl font-extrabold text-cyan-800 mb-3">
                     Islamic Library
                 </h2>
                 <p className="text-gray-600 max-w-2xl mx-auto text-lg md:text-xl">
-                    Explore a curated collection of inspiring Islamic books for learning, reflection, and growth.
+                    Explore a curated collection of inspiring Islamic books for learning,
+                    reflection, and growth.
                 </p>
-            </div>
+            </motion.div>
 
             {/* Book Grid */}
-            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8 p-4">
+            <motion.div
+                className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8 p-4"
+                initial={{ opacity: 0, y: 80 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                transition={{
+                    duration: 1.4,
+                    delay: 0.4,
+                    ease: [0.25, 0.1, 0.25, 1],
+                }}
+                viewport={{ once: true }}
+            >
                 {books.length === 0 ? (
                     <p className="col-span-full text-center text-gray-500 text-lg">
                         Loading books...
                     </p>
                 ) : (
-                    books.map((book) => (
-                        <article
+                    books.map((book, index) => (
+                        <motion.article
                             key={book.id}
                             className="overflow-hidden rounded-xl border border-gray-100 bg-white shadow transition-all duration-300 hover:shadow-lg hover:-translate-y-1 hover:scale-[1.02]"
+                            initial={{ opacity: 0, y: 60 }}
+                            whileInView={{ opacity: 1, y: 0 }}
+                            transition={{
+                                duration: 0.8,
+                                delay: index * 0.1,
+                                ease: "easeOut",
+                            }}
+                            viewport={{ once: true }}
                         >
                             <img
                                 src={
@@ -87,11 +122,11 @@ function IslamicLibrary() {
                                     </span>
                                 </Link>
                             </div>
-                        </article>
+                        </motion.article>
                     ))
                 )}
-            </div>
-        </section>
+            </motion.div>
+        </motion.section>
     );
 }
 
