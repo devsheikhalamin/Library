@@ -15,7 +15,7 @@ interface Book {
     };
 }
 
-const NewBooks: React.FC = () => {
+const NewBooks2: React.FC = () => {
     const [books, setBooks] = useState<Book[]>([]);
 
     useEffect(() => {
@@ -98,4 +98,4 @@ const NewBooks: React.FC = () => {
     );
 };
 
-export default NewBooks;
+export default NewBooks2;

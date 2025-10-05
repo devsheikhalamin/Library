@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { motion } from "framer-motion";
-import BookCard from "./BookCard";
+import BookCard from "./BookCard"; // আগের মতোই ব্যবহার করা হচ্ছে
 
 interface Book {
     id: string;
@@ -11,16 +11,17 @@ interface Book {
             thumbnail?: string;
         };
         description?: string;
-        previewLink: string;
+        previewLink?: string;
     };
 }
 
-const IslamicBooks: React.FC = () => {
+const BanglaStoryBooks: React.FC = () => {
     const [books, setBooks] = useState<Book[]>([]);
 
     useEffect(() => {
         fetch(
-            "https://www.googleapis.com/books/v1/volumes?q=islamic+library&maxResults=8"
+
+            "https://www.googleapis.com/books/v1/volumes?q=বাংলা+গল্পের+বই&langRestrict=bn&maxResults=12"
         )
             .then((res) => res.json())
             .then((data) => {
@@ -32,37 +33,36 @@ const IslamicBooks: React.FC = () => {
     }, []);
 
     return (
-        <div className="bg-gradient-to-r from-amber-50 via-white to-amber-50">
+        <div className="bg-gradient-to-r from-amber-50 via-white to-amber-50 overflow-hidden">
             <motion.section
-                className="py-16 px-4 overflow-hidden"
+                className="py-16 px-4"
                 initial={{ opacity: 0, y: 150 }}
                 whileInView={{ opacity: 1, y: 0 }}
                 transition={{
                     duration: 1.8,
-                    ease: [0.25, 0.1, 0.25, 1], // cubic-bezier for buttery-smooth
+                    ease: [0.25, 0.1, 0.25, 1],
                 }}
                 viewport={{ once: true, amount: 0.2 }}
             >
-                {/* Title Animation */}
+                {/* Section Title */}
                 <motion.div
-                    className="text-center mb-12"
+                    className="text-center mb-10"
                     initial={{ opacity: 0, y: 60 }}
                     whileInView={{ opacity: 1, y: 0 }}
                     transition={{ duration: 1, delay: 0.2, ease: "easeOut" }}
                     viewport={{ once: true }}
                 >
                     <h2 className="text-4xl md:text-5xl font-extrabold text-cyan-800 mb-3">
-                        Islamic Books
+                        Bangla Storybooks
                     </h2>
-                    <p className="text-gray-600 max-w-2xl mx-auto text-lg md:text-xl">
-                        Explore a curated collection of inspiring Islamic books for learning,
-                        reflection, and growth.
+                    <p className="text-gray-600 max-w-xl mx-auto">
+                        Bangla Storybooks” means storybooks written in the Bengali language. In short
                     </p>
                 </motion.div>
 
-                {/* Book Grid Animation */}
+                {/* Book Grid */}
                 <motion.div
-                    className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8"
+                    className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6"
                     initial={{ opacity: 0, y: 100 }}
                     whileInView={{ opacity: 1, y: 0 }}
                     transition={{
@@ -74,10 +74,24 @@ const IslamicBooks: React.FC = () => {
                 >
                     {books.length === 0 ? (
                         <p className="col-span-full text-center text-gray-500 text-lg">
-                            Loading books...
+                            বই লোড হচ্ছে...
                         </p>
                     ) : (
-                        books.map((book) => <BookCard key={book.id} book={book} />)
+                        books.map((book, index) => (
+                            <motion.div
+                                key={book.id}
+                                initial={{ opacity: 0, y: 60 }}
+                                whileInView={{ opacity: 1, y: 0 }}
+                                transition={{
+                                    duration: 0.8,
+                                    delay: index * 0.1,
+                                    ease: "easeOut",
+                                }}
+                                viewport={{ once: true }}
+                            >
+                                <BookCard book={book} />
+                            </motion.div>
+                        ))
                     )}
                 </motion.div>
             </motion.section>
@@ -85,4 +99,4 @@ const IslamicBooks: React.FC = () => {
     );
 };
 
-export default IslamicBooks;
+export default BanglaStoryBooks;

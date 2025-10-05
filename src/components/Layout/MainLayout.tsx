@@ -1,17 +1,18 @@
-import IslamicBook from "@/PageSection/islamicBook";
-import BestBook from "../../PageSection/BestBook";
-import HeaderPage from "../../PageSection/Header";
-import IslamicLibrary from "../../PageSection/BookData";
-import NewBooks from "@/PageSection/BanglaBook";
 
+import BanglaStoryBooks from "@/PageSection/islamicBook";
+import HeaderPage from "../../PageSection/Header";
+import NewBooks from "@/PageSection/BanglaBook";
+import NewBooks2 from "../../PageSection/BestBook";
+import IslamicLibrary2 from "@/PageSection/BookData";
 function MainLayout() {
     return (
         <>
             <HeaderPage />
-            <IslamicBook />
-            <IslamicLibrary />
-            <BestBook />
+            <BanglaStoryBooks />
+            <NewBooks2 />
             <NewBooks />
+            <IslamicLibrary2 />
+
 
 
         </>
