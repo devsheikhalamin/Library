@@ -25,7 +25,7 @@ const FooterPage = () => {
           <div className="max-w-screen-xl mx-auto px-6">
             <div className="py-12 flex flex-col items-center text-center">
               {/* Logo */}
-              <h1 className="text-[20px] text-cyan-800">
+              <h1 className="text-[22px] text-cyan-800">
                 BOOK<strong>SOW</strong>
               </h1>
 

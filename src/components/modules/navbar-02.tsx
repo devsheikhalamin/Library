@@ -11,7 +11,7 @@ const NavbarPage = () => {
                 <div className="h-full flex items-center justify-between max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
                     {/* Logo + Desktop Menu */}
                     <div className="flex items-center gap-10">
-                        <h1 className="text-[20px] font-bold text-cyan-800">
+                        <h1 className="text-[22px] text-cyan-800">
                             BOOK<strong>SOW</strong>
                         </h1>
                         <NavMenu className="hidden md:block" />
@@ -30,7 +30,7 @@ const NavbarPage = () => {
                         </div>
 
                         {/* Sign In Button */}
-                        <Button className="hidden sm:inline-flex px-4 py-2 text-sm bg-cyan-800">
+                        <Button className="hidden sm:inline-flex px-4 py-2 text-sm bg-cyan-800 text-white">
                             Sign in
                         </Button>
 
