@@ -11,11 +11,12 @@ const AboutBookPage = () => {
 
     return (
         <section className="min-h-screen flex items-center justify-center bg-gradient-to-r from-amber-50 via-white to-amber-50 py-16 px-6">
+
             <motion.div
                 initial={{ opacity: 0, y: 40 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.8 }}
-                className="max-w-6xl w-full grid md:grid-cols-2 gap-12 items-center bg-card rounded-3xl shadow-xl p-8 md:p-14"
+                className="max-w-6xl w-full grid md:grid-cols-2 gap-12 items-center rounded-3xl shadow-xl p-8 md:p-14 bg-amber-50 border-white"
             >
                 {/* Text Section */}
                 <div>
@@ -80,6 +81,7 @@ const AboutBookPage = () => {
                     />
                 </div>
             </motion.div>
+
         </section>
     );
 };
